@@ -1,0 +1,17 @@
+@font-face { font-family: GameThrones; src: url('GameThrones.ttf'); }
+
+body {
+	background: url('../backgrounds/texturetastic_gray/texturetastic_gray.png') repeat;
+	color: #333;
+	font-family: Merriweather, serif;
+}
+
+h1 {
+	font-family: GameThrones;
+	font-size: 3.5em;
+	font-weight: normal;
+}
+
+.is-centered {
+	text-align: center;
+}
