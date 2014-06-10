@@ -1,11 +1,3 @@
-$(document).ready( function() {
-	$('#winter').fadeOut(2000);
-	setTimeout(function() {
-		$('#content').fadeIn(5000);
-	}, 2000);
-});
-
-
 // define results object to display user result
 
 var results = {
@@ -25,17 +17,61 @@ var results = {
 
 // define function to scroll to next question
 
-var scrollNext = function () {
-	var currentid = this.id;
+var scrollNext = function (currentQuestion) {
+	var questionNumber = parseInt(currentQuestion[2]);
+	questionNumber += 1;
+
+	$(document.getElementById(currentQuestion)).fadeTo(1000, 0.5, function() {
+		$('html,body').animate({
+			scrollTop: 0
+		}, 1000);
+		return false;
+	});
 }
 
 // click handlers to add points to results object
 
-$(".characters li").click( function() {
-	var id = $(this).attr("id");
-	results.SV += 1;
-	scrollNext();
-	getMax();
+$(".questions li").click( function() {
+	var answerId = $(this).attr("id");
+	var questionId = this.parentNode.id;
+	var answer = answerId.substring(4, answerId.length);
+		if (answer == "wall") {
+			results.SV += 1;
+		}
+		else if (answer == "winterfell") {
+			results.Mission += 1;
+		}
+		else if (answer == "pyke") {
+			results.Sunset += 1;
+		}
+		else if (answer == "riverrun") {
+			results.GGPark += 1;
+		}
+		else if (answer == "eyrie") {
+			results.Twin += 1;
+		}
+		else if (answer == "dragonstone") {
+			results.SOMA += 1;
+		}
+		else if (answer == "casterly") {
+			results.FiDi += 1;
+		}
+		else if (answer == "king") {
+			results.Tenderloin += 1;
+		}
+		else if (answer == "storm") {
+			results.Presidio += 1;
+		}
+		else if (answer == "highgarden") {
+			results.Castro += 1;
+		}
+		else if (answer == "dorne") {
+			results.Dogpatch += 1;
+		}
+		else if (answer == "essos") {
+			results.Oakland += 1;
+		}
+	scrollNext(questionId);
 });
 
 // find max value from results object
@@ -48,3 +84,12 @@ var getMax = function () {
 	var maxValue = Math.max.apply(null, valueArray);
 	console.log(maxValue);
 }
+
+// Fade out Hackweek, fade in content
+
+// $(document).ready( function() {
+// 	$('#winter').fadeOut(2000);
+// 	setTimeout(function() {
+// 		$('#content').fadeIn(5000);
+// 	}, 2000);
+// });

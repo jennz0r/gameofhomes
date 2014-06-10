@@ -8,7 +8,7 @@ body {
 
 h1 {
 	font-family: GameThrones;
-	font-size: 3.5em;
+	font-size: 2.5em;
 	font-weight: normal;
 }
 
@@ -17,10 +17,20 @@ img {
 	border: 1px solid #888;
 }
 
-#content {
+/* #content {
 	display: none;
-}
+} */
 
 .is-centered {
 	text-align: center;
+}
+
+.title {
+	margin-top: 1.5em;
+}
+
+@media only screen and (min-width: 40em) {
+	h1 {
+		font-size: 3.5em;
+	}
 }
