@@ -1,3 +1,11 @@
+$(document).ready( function() {
+	$('#winter').fadeOut(2000);
+	setTimeout(function() {
+		$('#content').fadeIn(5000);
+	}, 2000);
+});
+
+
 // define results object to display user result
 
 var results = {
@@ -23,7 +31,8 @@ var scrollNext = function () {
 
 // click handlers to add points to results object
 
-$("#q01_wall").click( function() {
+$(".characters li").click( function() {
+	var id = $(this).attr("id");
 	results.SV += 1;
 	scrollNext();
 	getMax();
@@ -37,5 +46,5 @@ var getMax = function () {
 		return results[key];
 	});
 	var maxValue = Math.max.apply(null, valueArray);
-	console.log(valueArray);
+	console.log(maxValue);
 }

@@ -16,5 +16,8 @@ img {
   padding: 2px;
   border: 1px solid #888; }
 
+#content {
+  display: none; }
+
 .is-centered {
   text-align: center; }
