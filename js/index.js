@@ -20,10 +20,10 @@ var results = {
 var scrollNext = function (currentQuestion) {
 	var questionNumber = parseInt(currentQuestion[2]);
 	questionNumber += 1;
-
+	var aTag = $("a[name='" + questionNumber +"']");
 	$(document.getElementById(currentQuestion)).fadeTo(1000, 0.5, function() {
 		$('html,body').animate({
-			scrollTop: 0
+			scrollTop: aTag.offset().top
 		}, 1000);
 		return false;
 	});
