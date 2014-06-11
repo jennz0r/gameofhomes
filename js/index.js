@@ -15,6 +15,8 @@ var results = {
 	"essos": 0
 };
 
+var possibleAnswers = [];
+
 // define function to scroll to next question
 
 var scrollNext = function (currentQuestion) {
@@ -43,8 +45,8 @@ var getMax = function () {
 		return results[key];
 	});
 	var maxValue = Math.max.apply(null, valueArray);
-	console.log(maxValue);
 	getKeyByValue(results, maxValue);
+
 }
 
 // find key associated with value
@@ -53,7 +55,8 @@ var getKeyByValue = function(object, value) {
     for(var prop in object) {
         if(object[prop] === value) {
          	console.log(prop);
-        	return prop;
+        	possibleAnswers.push(prop);
+        	console.log(possibleAnswers);
         }
     }
 }
