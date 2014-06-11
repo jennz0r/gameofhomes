@@ -22,28 +22,18 @@ var scrollNext = function (currentQuestion) {
 	questionNumber += 1;
 	var aTag = $("a[name='" + questionNumber +"']");
 	$(document.getElementById(currentQuestion)).fadeTo(1000, 0.5, function() {
-		if (questionNumber < 6) {
+		if (questionNumber < 7) {
 			$('html,body').animate({
 				scrollTop: aTag.offset().top
 			}, 1500);
 			return false;
 		}
-		else if (questionNumber == 6) {
+		else if (questionNumber == 7) {
 			console.log("show the results!");
+			getMax();
 		}
 	});
 }
-
-// click handlers to add points to results object
-
-$(".questions li").click( function() {
-	var answerId = $(this).attr("id");
-	var questionId = this.parentNode.id;
-	var answer = answerId.substring(4, answerId.length);
-	results[answer]++;
-	scrollNext(questionId);
-	getMax();
-});
 
 // find max value from results object
 
@@ -54,7 +44,29 @@ var getMax = function () {
 	});
 	var maxValue = Math.max.apply(null, valueArray);
 	console.log(maxValue);
+	getKeyByValue(results, maxValue);
 }
+
+// find key associated with value
+
+var getKeyByValue = function(object, value) {
+    for(var prop in object) {
+        if(object[prop] === value) {
+         	console.log(prop);
+        	return prop;
+        }
+    }
+}
+
+// click handlers to add points to results object
+
+$(".questions li").click( function(e) {
+	var answerId = $(this).attr("id");
+	var questionId = this.parentNode.id;
+	var answer = answerId.substring(4, answerId.length);
+	results[answer]++;
+	scrollNext(questionId);
+});
 
 // Fade out Hackweek, fade in content
 
