@@ -22,10 +22,15 @@ var scrollNext = function (currentQuestion) {
 	questionNumber += 1;
 	var aTag = $("a[name='" + questionNumber +"']");
 	$(document.getElementById(currentQuestion)).fadeTo(1000, 0.5, function() {
-		$('html,body').animate({
-			scrollTop: aTag.offset().top
-		}, 1000);
-		return false;
+		if (questionNumber < 5) {
+			$('html,body').animate({
+				scrollTop: aTag.offset().top
+			}, 1500);
+			return false;
+		}
+		else if (questionNumber == 5) {
+			console.log("show the results!");
+		}
 	});
 }
 
@@ -87,9 +92,9 @@ var getMax = function () {
 
 // Fade out Hackweek, fade in content
 
-// $(document).ready( function() {
-// 	$('#winter').fadeOut(2000);
-// 	setTimeout(function() {
-// 		$('#content').fadeIn(5000);
-// 	}, 2000);
-// });
+$(document).ready( function() {
+	$('#winter').fadeOut(2000);
+	setTimeout(function() {
+		$('#content').fadeIn(5000);
+	}, 2000);
+});

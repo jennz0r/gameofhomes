@@ -12,14 +12,22 @@ h1 {
 	font-weight: normal;
 }
 
+li {
+	cursor: pointer;
+}
+
 img {
 	padding: 2px;
 	border: 1px solid #888;
 }
 
-/* #content {
+#content, .answer {
 	display: none;
-} */
+}
+
+#q04 {
+	margin: 1.5em 0 0 1.5em;
+}
 
 .is-centered {
 	text-align: center;
