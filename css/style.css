@@ -14,13 +14,18 @@ h1 {
 
 li {
   cursor: pointer; }
+  li img {
+    padding: 2px;
+    border: 1px solid #888; }
 
-img {
-  padding: 2px;
-  border: 1px solid #888; }
+#main-title {
+  margin-bottom: 0em; }
 
 #content, .answer {
   display: none; }
+
+#q03 li p {
+  margin-bottom: 0; }
 
 #q04 {
   margin: 1.5em 0 0 1.5em; }
@@ -30,6 +35,15 @@ img {
 
 .title {
   margin-top: 1.5em; }
+
+.caption {
+  position: absolute;
+  left: 0;
+  right: 0; }
+
+.flourish {
+  display: block;
+  margin: 0 auto; }
 
 @media only screen and (min-width: 40em) {
   h1 {

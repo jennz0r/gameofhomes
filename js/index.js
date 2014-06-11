@@ -1,18 +1,18 @@
 // define results object to display user result
 
 var results = {
-	"SV" : 0,
-	"Mission": 0,
-	"Sunset": 0,
-	"GGPark": 0,
-	"Twin": 0,
-	"SOMA": 0,
-	"FiDi": 0,
-	"Tenderloin": 0,
-	"Presidio": 0,
-	"Castro": 0,
-	"Dogpatch": 0,
-	"Oakland": 0
+	"wall" : 0,
+	"winterfell": 0,
+	"pyke": 0,
+	"riverrun": 0,
+	"eyrie": 0,
+	"dragonstone": 0,
+	"casterly": 0,
+	"king": 0,
+	"storm": 0,
+	"highgarden": 0,
+	"dorne": 0,
+	"essos": 0
 };
 
 // define function to scroll to next question
@@ -22,13 +22,13 @@ var scrollNext = function (currentQuestion) {
 	questionNumber += 1;
 	var aTag = $("a[name='" + questionNumber +"']");
 	$(document.getElementById(currentQuestion)).fadeTo(1000, 0.5, function() {
-		if (questionNumber < 5) {
+		if (questionNumber < 6) {
 			$('html,body').animate({
 				scrollTop: aTag.offset().top
 			}, 1500);
 			return false;
 		}
-		else if (questionNumber == 5) {
+		else if (questionNumber == 6) {
 			console.log("show the results!");
 		}
 	});
@@ -40,43 +40,9 @@ $(".questions li").click( function() {
 	var answerId = $(this).attr("id");
 	var questionId = this.parentNode.id;
 	var answer = answerId.substring(4, answerId.length);
-		if (answer == "wall") {
-			results.SV += 1;
-		}
-		else if (answer == "winterfell") {
-			results.Mission += 1;
-		}
-		else if (answer == "pyke") {
-			results.Sunset += 1;
-		}
-		else if (answer == "riverrun") {
-			results.GGPark += 1;
-		}
-		else if (answer == "eyrie") {
-			results.Twin += 1;
-		}
-		else if (answer == "dragonstone") {
-			results.SOMA += 1;
-		}
-		else if (answer == "casterly") {
-			results.FiDi += 1;
-		}
-		else if (answer == "king") {
-			results.Tenderloin += 1;
-		}
-		else if (answer == "storm") {
-			results.Presidio += 1;
-		}
-		else if (answer == "highgarden") {
-			results.Castro += 1;
-		}
-		else if (answer == "dorne") {
-			results.Dogpatch += 1;
-		}
-		else if (answer == "essos") {
-			results.Oakland += 1;
-		}
+	results[answer]++;
 	scrollNext(questionId);
+	getMax();
 });
 
 // find max value from results object
