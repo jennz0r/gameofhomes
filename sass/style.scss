@@ -40,10 +40,6 @@ li {
 	text-align: center;
 }
 
-.title {
-	margin-top: 1.5em;
-}
-
 .caption {
 	position: absolute;
 	left: 0;
@@ -62,5 +58,20 @@ li {
 @media only screen and (min-width: 40em) {
 	h1 {
 		font-size: 3.5em;
+	}
+	#main-title {
+		margin-top: 1.5em;
+	}
+	#winter {
+		margin-top: 10em;
+	}
+	#q04 {
+		margin: 1.5em 0 2.5em 2.5em;
+	}
+	.flourish {
+		margin: 0 auto 2em auto;
+	}
+	.questions {
+		margin-bottom: 2em;
 	}
 }

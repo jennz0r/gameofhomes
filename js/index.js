@@ -24,19 +24,28 @@ var possibleAnswers = [];
 
 var scrollNext = function (currentQuestion) {
 	var questionNumber = parseInt(currentQuestion[2]);
-	questionNumber += 1;
-	var aTag = $("a[name='" + questionNumber +"']");
+	nextQuestionNumber = questionNumber + 1;
+	var aTag = $("a[name='" + nextQuestionNumber +"']");
 	var totalAnswers = getTotalAnswers(results);
-	$(document.getElementById(currentQuestion)).fadeTo(1000, 0.5, function() {
+	$('#' + currentQuestion).fadeTo(1000, 0.5, function() {
 		if (totalAnswers < 8) {
-			$('html,body').animate({
-				scrollTop: aTag.offset().top
-			}, 1500);
-			return false;
+			if (questionNumber <= 7) {
+				$('html,body').animate({
+					scrollTop: aTag.offset().top
+				}, 1500);
+				return false;
+			}
+			else if (questionNumber == 8) {
+				$('#forgot').css("display","block");
+				$('html,body').animate({
+					scrollTop: $('a[name="answer"]').offset().top
+				}, 1500);
+			}
 		}
-		else if (totalAnswers >= 8) {
+		else if (totalAnswers == 8) {
 			getMax();
 			var answerResultId = possibleAnswers[Math.floor(Math.random()*possibleAnswers.length)];
+			$('#forgot').css("display","none");
 			$('#resultsTitle').css("display","block");
 			$('#' + answerResultId).css("display","block");
 			$('html,body').animate({
