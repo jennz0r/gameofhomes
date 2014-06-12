@@ -16,6 +16,17 @@ var results = {
 	"essos": 0
 };
 
+var answered = {
+	q01: false,
+	q02: false,
+	q03: false,
+	q04: false,
+	q05: false,
+	q06: false,
+	q07: false,
+	q08: false,
+}
+
 var possibleAnswers = [];
 
 // define function to fade current question
@@ -93,8 +104,14 @@ $(".questions li").click( function(e) {
 	var answerId = $(this).attr("id");
 	var questionId = this.parentNode.id;
 	var answer = answerId.substring(4, answerId.length);
-	results[answer]++;
-	scrollNext(questionId);
+	if (answered[questionId] == false) {
+		results[answer]++;
+		scrollNext(questionId);
+		answered[questionId] = true;
+	}
+	else {
+		scrollNext(questionId);
+	}
 });
 
 // Fade out Hackweek, fade in content
