@@ -21,7 +21,7 @@ li {
 #main-title {
   margin-bottom: 0em; }
 
-#content, #resultsTitle, .answer {
+#content, #resultsTitle, #attribution, .answer {
   display: none; }
 
 #q03 li p, #q08 li p {

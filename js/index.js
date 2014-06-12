@@ -59,6 +59,7 @@ var scrollNext = function (currentQuestion) {
 			$('#forgot').css("display","none");
 			$('#resultsTitle').css("display","block");
 			$('#' + answerResultId).css("display","block");
+			$('#attribution').css("display","block");
 			$('html,body').animate({
 				scrollTop: $('a[name="answer"]').offset().top
 			}, 1500);
