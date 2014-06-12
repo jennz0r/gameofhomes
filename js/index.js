@@ -1,4 +1,5 @@
 // define results object to display user result
+// define possible answers array based on users' answers
 
 var results = {
 	"wall" : 0,
@@ -17,22 +18,30 @@ var results = {
 
 var possibleAnswers = [];
 
-// define function to scroll to next question
+// define function to fade current question
+// and scroll to next question
+// if at the end of the quiz, display the result instead.
 
 var scrollNext = function (currentQuestion) {
 	var questionNumber = parseInt(currentQuestion[2]);
 	questionNumber += 1;
 	var aTag = $("a[name='" + questionNumber +"']");
+	var totalAnswers = getTotalAnswers(results);
 	$(document.getElementById(currentQuestion)).fadeTo(1000, 0.5, function() {
-		if (questionNumber < 7) {
+		if (totalAnswers < 8) {
 			$('html,body').animate({
 				scrollTop: aTag.offset().top
 			}, 1500);
 			return false;
 		}
-		else if (questionNumber == 7) {
-			console.log("show the results!");
+		else if (totalAnswers >= 8) {
 			getMax();
+			var answerResultId = possibleAnswers[Math.floor(Math.random()*possibleAnswers.length)];
+			$('#resultsTitle').css("display","block");
+			$('#' + answerResultId).css("display","block");
+			$('html,body').animate({
+				scrollTop: $('a[name="answer"]').offset().top
+			}, 1500);
 		}
 	});
 }
@@ -46,19 +55,27 @@ var getMax = function () {
 	});
 	var maxValue = Math.max.apply(null, valueArray);
 	getKeyByValue(results, maxValue);
-
 }
 
 // find key associated with value
+// push key to answer array
 
 var getKeyByValue = function(object, value) {
-    for(var prop in object) {
-        if(object[prop] === value) {
-         	console.log(prop);
+    for (var prop in object) {
+        if (object[prop] === value) {
         	possibleAnswers.push(prop);
-        	console.log(possibleAnswers);
         }
     }
+}
+
+// get total number of answers (from results array)
+
+var getTotalAnswers = function(object) {
+	var sum = 0;
+	for (var prop in object) {
+		sum += object[prop];
+	}
+	return sum;
 }
 
 // click handlers to add points to results object

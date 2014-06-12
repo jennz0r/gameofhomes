@@ -24,7 +24,7 @@ li {
 #content, .answer {
   display: none; }
 
-#q03 li p {
+#q03 li p, #q08 li p {
   margin-bottom: 0; }
 
 #q04 {
@@ -43,6 +43,9 @@ li {
 
 .flourish {
   display: block;
+  margin: 0 auto; }
+
+.answer img {
   margin: 0 auto; }
 
 @media only screen and (min-width: 40em) {

@@ -28,7 +28,7 @@ li {
 	display: none;
 }
 
-#q03 li p {
+#q03 li p, #q08 li p {
 	margin-bottom: 0;
 }
 
@@ -52,6 +52,10 @@ li {
 
 .flourish {
 	display: block;
+	margin: 0 auto;
+}
+
+.answer img {
 	margin: 0 auto;
 }
 
