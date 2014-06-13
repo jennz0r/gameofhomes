@@ -31,6 +31,10 @@ li {
 #q04 {
   margin: 1.5em 0 0 1.5em; }
 
+#cat {
+  color: #333;
+  text-decoration: none; }
+
 .is-centered {
   text-align: center; }
 
